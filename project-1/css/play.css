@@ -2,6 +2,9 @@ body{
   background-color: #e6e0d7;
 }
 canvas{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border: 1px solid black;
   
 }

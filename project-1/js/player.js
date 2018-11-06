@@ -18,9 +18,12 @@ function Player(game) {
     
     
     this.img = new Image();
-    this.img.src = 'img/arbol1.png';
-    //this.img.frames = 2;
-    //this.img.frameIndex = 0;
+    this.img.src = 'img/arboles.png';
+
+    // ctx.drawImage(this.img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+    
+    this.img.frames = 2;
+    this.img.frameIndex = 0;
 
 
 
@@ -32,7 +35,13 @@ function Player(game) {
 }
 
 Player.prototype.drawPlayer = function () {
-    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    this.game.ctx.drawImage(
+        this.img,
+        this.img.frameIndex * this.img.width / this.img.frames,
+        0,
+        this.img.width / this.img.frames,
+        this.img.height,
+        this.x, this.y, this.width, this.height);
 
 }
 Player.prototype.setListeners = function () {

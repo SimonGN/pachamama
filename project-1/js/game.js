@@ -29,6 +29,10 @@ Game.prototype.init = function () {
         if(this.isCollision()){         //añadir todo lo que quieras que pase cuando haga colision
             this.raindrops[0].hit = true; //Si existe una colision nos devuleve tru
             this.player.score += 2;         //suma +2 la vida
+            this.player.img.frameIndex= 1;
+            setTimeout(function(){              //reciba la segunda imagen y le aplica el tiempo en cambiar
+                this.player.img.frameIndex=0;
+            }.bind(this),500);
         } else {// lo que pasa si no pilla agua
             
 
