@@ -8,7 +8,8 @@ function Game(id) {
     this.keyRight = 39;
 
     this.background = new Background(this);
-    this.player = new Player(this)
+    this.player = new Player(this);
+    this.raindrops = new Raindrops(this);
 }
 
 Game.prototype.init = function () {
@@ -25,5 +26,5 @@ Game.prototype.init = function () {
 Game.prototype.drawAll = function () {
     this.background.drawBackground();
     this.player.drawPlayer();
-    this.raindrops.drawraindrops();
+    this.raindrops.drawRaindrops();
 }

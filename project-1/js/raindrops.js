@@ -9,25 +9,17 @@ function Raindrops(game) {
     this.width = 100;
     this.height = 160;
     this.dx = 6;
-    
-    this.x = raindrops.canvas.width / 2;
-    this.y = raindrops.canvas.height - this.height;
-    
-    
-    this.y0 = this.raindrops.canvas.height * 0.8;
+    this.x = game.canvas.width / 2;
+    this.y = game.canvas.height - this.height;
     
     
-
-    //this.img.frames = 2;
-    //this.img.frameIndex = 0;
-
+    this.y0 = game.canvas.height * 0.8;
+    
 
 
     this.vx = 10; //velocidad de movimiento
 
     this.bullets = [];
-
-    this.setListeners(); //escucha el teclado
 }
 
 Raindrops.prototype.drawRaindrops = function () {
