@@ -6,11 +6,14 @@ function Raindrops(game) {
 
     this.x = 0;
     this.y = 0;
-    this.width = 100;
-    this.height = 160;
-    this.dx = 6;
-    this.x = game.canvas.width / 2;
-    this.y = game.canvas.height - this.height;
+    this.width = 30;
+    this.height = 50;
+    this.hit = false;
+
+    this.dy = 6;
+
+    this.x =Math.floor(Math.random() * (game.canvas.width - this.width)) ;
+    this.y = game.canvas.height - 600;
     
     
     this.y0 = game.canvas.height * 0.8;
@@ -23,5 +26,17 @@ function Raindrops(game) {
 }
 
 Raindrops.prototype.drawRaindrops = function () {
-    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    if (this.hit === true) {    //no pinte y nos resetea
+        this.hit = false;
+    } else {                /// si es false pinta
+        this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        }
+
 }
+// Raindrops.prototype.generateObstacle = function() {
+//   this.obstacles.push(new Obstacle(this));
+// };
+Raindrops.prototype.moveRaindrops = function () {
+    this.y += 10;
+}
+

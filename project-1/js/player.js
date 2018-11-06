@@ -5,12 +5,12 @@ var moveR = 39;
 
 function Player(game) {
     this.game = game;
-
+    this.score = 0;
     
     this.width = 100;
     this.height = 160;
     
-    this.x = game.canvas.width / 2;
+    this.x = (game.canvas.width / 2) - (this.width/2);
     this.y = game.canvas.height - this.height;
     
     
@@ -24,7 +24,7 @@ function Player(game) {
 
 
 
-    this.vx = 10; //velocidad de movimiento
+    this.vx = 40; //velocidad de movimiento
 
     this.bullets = [];
 
@@ -46,13 +46,13 @@ Player.prototype.setListeners = function () {
                break;*/
         switch (e.keyCode) {
             case moveL:
-                if ((this.x - this.vx) > 0) {
+                if ((this.x - this.vx) >= 0) {
                     this.x -= this.vx;
                 }
                 break;
 
             case moveR:
-                if ((this.x + this.vx) < this.game.canvas.width - this.height) { //movimiento drch y le restas ls px de la figura
+                if ((this.x + this.vx) + this.width <= this.game.canvas.width ) { //movimiento drch y le restas ls px de la figura
                     this.x += this.vx;
                 }
                 break;
