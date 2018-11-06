@@ -1,43 +1,65 @@
 var Arriba = 38;
 var Abajo = 40;
-var izq = 37;
-var drch= 39;
+var moveL = 37;
+var moveR = 39;
 
 function Player(game) {
     this.game = game;
 
-    this.w = 100;
-    this.h = 135;
     
-    this.x = game.canvas.width/2;
-    this.y = game.canvas.height - this.h;
+    this.width = 100;
+    this.height = 160;
+    
+    this.x = game.canvas.width / 2;
+    this.y = game.canvas.height - this.height;
     
     
     this.y0 = this.game.canvas.height * 0.8;
     
-  
+    
     this.img = new Image();
     this.img.src = 'img/arbol1.png';
+    //this.img.frames = 2;
+    //this.img.frameIndex = 0;
 
-    
-  
-    this.vy = 10;
-  
+
+
+    this.vx = 10; //velocidad de movimiento
+
     this.bullets = [];
-  
+
     this.setListeners(); //escucha el teclado
 }
 
-Player.prototype.drawPlayer = function (){
-    this.game.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+Player.prototype.drawPlayer = function () {
+    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
 
 }
-Player.prototype.setListeners = function(){
-    document.onkeydown = function (e){
+Player.prototype.setListeners = function () {
+    document.onkeydown = function (e) {
         e.preventDefault();
 
-        
+        /* switch(e.keyCode) {                        // movimiento en x del arbolito
+               case izq: this.x -= this.vx;
+               break;
+               case drch: this.x += this.vx;
+               break;*/
+        switch (e.keyCode) {
+            case moveL:
+                if ((this.x - this.vx) > 0) {
+                    this.x -= this.vx;
+                }
+                break;
+
+            case moveR:
+                if ((this.x + this.vx) < this.game.canvas.width - this.height) { //movimiento drch y le restas ls px de la figura
+                    this.x += this.vx;
+                }
+                break;
 
         }
+
+
+
     }.bind(this)
 }

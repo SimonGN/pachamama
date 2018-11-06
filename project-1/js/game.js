@@ -25,4 +25,5 @@ Game.prototype.init = function () {
 Game.prototype.drawAll = function () {
     this.background.drawBackground();
     this.player.drawPlayer();
+    this.raindrops.drawraindrops();
 }
