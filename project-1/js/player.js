@@ -34,8 +34,8 @@ function Player(game) {
     this.setListeners(); //escucha el teclado
 }
 
-Player.prototype.drawPlayer = function () {
-    this.game.ctx.drawImage(
+Player.prototype.drawPlayer = function () {     //Colisiones
+    this.game.ctx.drawImage(                    //cambia las imagenes entre las dos
         this.img,
         this.img.frameIndex * this.img.width / this.img.frames,
         0,
@@ -65,10 +65,7 @@ Player.prototype.setListeners = function () {
                     this.x += this.vx;
                 }
                 break;
-
         }
-
-
-
     }.bind(this)
 }
+

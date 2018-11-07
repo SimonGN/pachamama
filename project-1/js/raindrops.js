@@ -26,11 +26,8 @@ function Raindrops(game) {
 }
 
 Raindrops.prototype.drawRaindrops = function () {
-    if (this.hit === true) {    //no pinte y nos resetea
-        this.hit = false;
-    } else {                /// si es false pinta
         this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        }
+        
 
 }
 // Raindrops.prototype.generateObstacle = function() {
