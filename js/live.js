@@ -7,8 +7,8 @@ function Live (game){
 
     this.width = 35;
     this.height = 70;
-    this.x = (this.game.canvas.width - this.width)-20;
-    this.y = 20
+    this.x = (this.game.canvas.width - this.width)-10;
+    this.y = 10
 
     this.img.frames = 3;
     this.img.frameIndex = 0;
@@ -27,16 +27,16 @@ Live.prototype.drawLive = function () {
 
 Live.prototype.drawText = function() {
     this.ctx.font = '30px serif';
-    this.ctx.fillText(this.game.time, this.x , this.y + 100);
+    this.ctx.fillText(this.game.time, this.x-50 , this.y + 47);
 }
 
 //Live.prototype.drawAll = function(){
 //}
 
 Live.prototype.changeLive = function () {
-    if (this.game.time >= 90){
+    if (this.game.time >= 75){
         this.img.frameIndex =0;
-    } else if(this.game.time >= 85){
+    } else if(this.game.time >= 30){
         this.img.frameIndex = 1;
     }else{
         this.img.frameIndex=2

@@ -1,6 +1,6 @@
 function Background(game) {
     this.img = new Image();
-    this.img.src = "img/background.jpg";
+    this.img.src = "img/background2.jpg";
     this.game = game;
     this.ctx = game.ctx;
     this.x = 0;
@@ -11,7 +11,6 @@ function Background(game) {
   }
   Background.prototype.drawBackground = function() {
     this.ctx.drawImage(this.img, this.x, this.y, this.game.canvas.width, this.game.canvas.height);
-3
   }
 
   Background.prototype.move = function() {

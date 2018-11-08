@@ -22,7 +22,7 @@ function Player(game) {
 
     // ctx.drawImage(this.img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
     
-    this.img.frames = 2;
+    this.img.frames = 3;
     this.img.frameIndex = 0;
 
 

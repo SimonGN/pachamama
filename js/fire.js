@@ -1,6 +1,6 @@
-function Raindrops(game) {
+function Fire(game) {
     this.img = new Image();
-    this.img.src = 'img/gota.png';
+    this.img.src = 'img/fire.png';
     this.game = game;
     this.ctx = game.ctx;
 
@@ -10,7 +10,7 @@ function Raindrops(game) {
     this.height = 50;
     this.hit = false;
 
-    this.dy = 6;
+  
 
     this.x =Math.floor(Math.random() * (game.canvas.width - this.width)) ;
     this.y = game.canvas.height - 600;
@@ -20,20 +20,14 @@ function Raindrops(game) {
     
 
 
-    this.vx = 10; //velocidad de movimiento
-
     this.bullets = [];
 }
 
-Raindrops.prototype.drawRaindrops = function () {
+Fire.prototype.drawFire = function () {
         this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+}
         
 
+Fire.prototype.moveFire = function () {
+    this.y += 12;  //velocidad de movimiento
 }
-// Raindrops.prototype.generateObstacle = function() {
-//   this.obstacles.push(new Obstacle(this));
-// };
-Raindrops.prototype.moveRaindrops = function () {
-    this.y += 10;
-}
-
