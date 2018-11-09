@@ -14,7 +14,7 @@ function Game(id) {
     this.raindrops = []
     this.counter = 0;
     this.time = 99;
-
+    //this.random
     this.intervalId;
 }
 
@@ -28,7 +28,7 @@ Game.prototype.init = function () {
 
         this.stop()
 
-        if(this.counter %60 == 0){
+        if(this.counter %60 == 0){   //velocidad de la aparición de gotas
             this.time--;
             this.generateRain()
             this.generateFire()
@@ -36,30 +36,30 @@ Game.prototype.init = function () {
         
         this.checkCollision(this.raindrops, "rain");
         this.checkCollision(this.fire, "fire");
-        this.clearRaindrops();
+        this.clearRaindrops();        //lo nombras para que te haga caso limpiar 
         this.clearFire();
-
+        // console.log(this.raindrops)
         this.live.changeLive();
     }.bind(this), 1000 / this.fps)
 }
 
 Game.prototype.checkCollision = function (arrayColision, value){
-    if(this.isCollision(arrayColision)){
+    if(this.isCollision(arrayColision)){         //añadir todo lo que quieras que pase cuando haga colision
         if(value == "rain"){
-            this.time += 2;
+            this.time += 2;         //suma +2 la vida
             this.player.img.frameIndex= 1;
         } else if("fire"){
             this.time -= 30;
             this.player.img.frameIndex= 2;
         }
-        setTimeout(function(){
+        setTimeout(function(){              //reciba la segunda imagen y le aplica el tiempo en cambiar
             this.player.img.frameIndex=0;
         }.bind(this),500);
-    } else {
+    } else {// lo que pasa si no pilla agua
     }
 }
 
-Game.prototype.clearRaindrops = function() {
+Game.prototype.clearRaindrops = function() {                    //limpia el canvas
     this.raindrops = this.raindrops.filter(function(raindrops) {
         
       return ((raindrops.y < this.canvas.height) && !raindrops.hit); 
@@ -67,7 +67,7 @@ Game.prototype.clearRaindrops = function() {
     }.bind(this));
 
   };
-Game.prototype.clearFire = function() {
+Game.prototype.clearFire = function() {                    //limpia el canvas
     this.fire = this.fire.filter(function(fire) {
         
       return ((fire.y < this.canvas.height) && !fire.hit); 
@@ -90,25 +90,26 @@ Game.prototype.drawAll = function () {
 
 }
 
-Game.prototype.moveRaindrops = function() {
+Game.prototype.moveRaindrops = function() {           //Array de las gotas de agua
     this.raindrops.forEach(function(e,){
          e.moveRaindrops()
     }.bind(this));
 }
-Game.prototype.moveFire = function() {
+Game.prototype.moveFire = function() {           //Array de las gotas de fuego
     this.fire.forEach(function(e,){
          e.moveFire()
     }.bind(this));
 }
 Game.prototype.generateRain = function(){
-    this.raindrops.push(new Raindrops(this))
+    this.raindrops.push(new Raindrops(this))    //dibuja el array vacio this.raindrops[]
 }
 
 Game.prototype.generateFire = function(){
-    this.fire.push(new Fire(this))
+    this.fire.push(new Fire(this))    //dibuja el array vacio this.raindrops[]
 }
 
-Game.prototype.isCollision = function(arrayColision) { 
+Game.prototype.isCollision = function(arrayColision) { //pinta las colisiones
+   // (p.x + p.w > o.x && o.x + o.w > p.x && p.y + p.h > o.y && o.y + o.h > p.y )   
     return arrayColision.some(function(raindrop) {
         var colision = (this.player.x + this.player.width) >= raindrop.x &&
         this.player.x <= (raindrop.x + raindrop.width) &&

@@ -29,5 +29,5 @@ Fire.prototype.drawFire = function () {
         
 
 Fire.prototype.moveFire = function () {
-    this.y += 12;  //velocidad de movimiento
+    this.y += 12;
 }

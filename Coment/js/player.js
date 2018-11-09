@@ -20,22 +20,22 @@ function Player(game) {
     this.img = new Image();
     this.img.src = 'img/arboles.png';
 
-
+    // ctx.drawImage(this.img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
     
     this.img.frames = 3;
     this.img.frameIndex = 0;
 
 
 
-    this.vx = 60; 
+    this.vx = 40; //velocidad de movimiento
 
     this.bullets = [];
 
-    this.setListeners(); 
+    this.setListeners(); //escucha el teclado
 }
 
-Player.prototype.drawPlayer = function () {
-    this.game.ctx.drawImage(
+Player.prototype.drawPlayer = function () {     //Colisiones
+    this.game.ctx.drawImage(                    //cambia las imagenes entre las dos
         this.img,
         this.img.frameIndex * this.img.width / this.img.frames,
         0,
@@ -48,6 +48,11 @@ Player.prototype.setListeners = function () {
     document.onkeydown = function (e) {
         e.preventDefault();
 
+        /* switch(e.keyCode) {                        // movimiento en x del arbolito
+               case izq: this.x -= this.vx;
+               break;
+               case drch: this.x += this.vx;
+               break;*/
         switch (e.keyCode) {
             case moveL:
                 if ((this.x - this.vx) >= 0) {
@@ -56,7 +61,7 @@ Player.prototype.setListeners = function () {
                 break;
 
             case moveR:
-                if ((this.x + this.vx) + this.width <= this.game.canvas.width ) {
+                if ((this.x + this.vx) + this.width <= this.game.canvas.width ) { //movimiento drch y le restas ls px de la figura
                     this.x += this.vx;
                 }
                 break;

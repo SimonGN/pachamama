@@ -29,6 +29,6 @@ Raindrops.prototype.drawRaindrops = function () {
 }
 
 Raindrops.prototype.moveRaindrops = function () {
-    this.y += 8;
+    this.y += 8; //velocidad de movimiento
 }
 

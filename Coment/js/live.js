@@ -16,7 +16,7 @@ function Live (game){
 
 
 Live.prototype.drawLive = function () {
-    this.ctx.drawImage(
+    this.ctx.drawImage(                    //cambia las imagenes entre las tres
         this.img,
         this.img.frameIndex * this.img.width / this.img.frames,
         0,
@@ -30,6 +30,8 @@ Live.prototype.drawText = function() {
     this.ctx.fillText(this.game.time, this.x-50 , this.y + 47);
 }
 
+//Live.prototype.drawAll = function(){
+//}
 
 Live.prototype.changeLive = function () {
     if (this.game.time >= 75){
